@@ -1,0 +1,105 @@
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huấn Luyện Viên Cờ Vua AI</title>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏆 Huấn Luyện Viên Cờ Vua AI</h1>
+            <p>Thành thạo cờ vua với huấn luyện viên AI cá nhân hóa</p>
+        </header>
+
+        <div class="main-content">
+            <div class="board-section">
+                <div class="board-controls">
+                    <button id="newGame" class="btn primary">Ván Mới</button>
+                    <button id="flipBoard" class="btn secondary">Lật Bàn Cờ</button>
+                    <button id="undoMove" class="btn secondary">Hoàn Tác</button>
+                </div>
+                <div id="chessboard" class="chessboard"></div>
+                <div class="game-info">
+                    <div class="captured-pieces">
+                        <h3>Quân Cờ Bị Bắt</h3>
+                        <div class="captured-display">
+                            <div class="captured-white">
+                                <h4>Trắng Bắt Được: <span id="whiteValue">0</span></h4>
+                                <div id="whiteCaptured" class="pieces-list"></div>
+                            </div>
+                            <div class="captured-black">
+                                <h4>Đen Bắt Được: <span id="blackValue">0</span></h4>
+                                <div id="blackCaptured" class="pieces-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="move-history">
+                        <h3>Lịch Sử Nước Đi</h3>
+                        <div id="moveHistory" class="move-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coach-section">
+                <div class="coach-header">
+                    <h2>🤖 Huấn Luyện Viên AI</h2>
+                    <div class="elo-input-container">
+                        <label for="eloInput">Điểm ELO của bạn:</label>
+                        <input type="number" id="eloInput" placeholder="1200" min="600" max="3000" value="1200" class="elo-input">
+                    </div>
+                    <div class="coaching-modes">
+                        <button id="openingMode" class="mode-btn active">Khai Cuộc</button>
+                        <button id="middlegameMode" class="mode-btn">Giữa Ván</button>
+                        <button id="endgameMode" class="mode-btn">Tàn Cuộc</button>
+                        <button id="tacticsMode" class="mode-btn">Chiến Thuật</button>
+                    </div>
+                </div>
+
+                <div class="chat-container">
+                    <div id="chatMessages" class="chat-messages">
+                        <div class="message coach-message">
+                            <div class="message-content">
+                                Chào mừng! Tôi là huấn luyện viên cờ vua AI của bạn. Hãy thực hiện một nước đi và tôi sẽ giúp bạn hiểu thế cờ và đề xuất cải thiện. Bạn muốn làm việc với điều gì hôm nay?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" placeholder="Hỏi huấn luyện viên bất cứ điều gì..." class="chat-input">
+                        <button id="sendMessage" class="btn primary">Gửi</button>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>Phân Tích Nhanh</h3>
+                    <button id="analyzePosition" class="btn secondary">Phân Tích Thế Cờ Hiện Tại</button>
+                    <button id="suggestMove" class="btn secondary">Đề Xuất Nước Đi Tốt Nhất</button>
+                    <button id="explainLastMove" class="btn secondary">Giải Thích Nước Đi Cuối</button>
+                </div>
+
+                <div class="presets">
+                    <h3>Kịch Bản Huấn Luyện</h3>
+                    <select id="scenarioSelect" class="scenario-select">
+                        <option value="">Chọn một kịch bản...</option>
+                        <option value="italian-game">Khai Cuộc Ý</option>
+                        <option value="queens-gambit">Gambit Hậu</option>
+                        <option value="sicilian-defense">Phòng Thủ Sicily</option>
+                        <option value="rook-endgame">Tàn Cuộc Xe</option>
+                        <option value="king-pawn-endgame">Tàn Cuộc Vua & Tốt</option>
+                        <option value="fork-tactics">Chiến Thuật Dĩa</option>
+                        <option value="pin-tactics">Chiến Thuật Ghim</option>
+                        <option value="discovered-attack">Tấn Công Phát Hiện</option>
+                    </select>
+                    <button id="loadScenario" class="btn primary">Tải Kịch Bản</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
